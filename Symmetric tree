@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isMirror(TreeNode* leftSubtree, TreeNode* rightSubtree) {
+        // Base case: Both subtrees are empty, so they are symmetric.
+        if (!leftSubtree && !rightSubtree)
+            return true;
+
+        // If one subtree is empty and the other is not, they are not symmetric.
+        if (!leftSubtree || !rightSubtree)
+            return false;
+
+        // Check if the values at the current nodes are equal and if the left subtree of the left
+        // node is a mirror of the right subtree of the right node and vice versa.
+        return (leftSubtree->val == rightSubtree->val) &&
+               isMirror(leftSubtree->left, rightSubtree->right) &&
+               isMirror(leftSubtree->right, rightSubtree->left);
+    }
+
+    bool isSymmetric(TreeNode* root) {
+        // Check if the tree is symmetric by comparing the left and right subtrees.
+        return isMirror(root, root);
+    }
+};
