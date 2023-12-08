@@ -1,0 +1,26 @@
+string tree2str(TreeNode* root) {
+        
+    
+     
+        if (!root) {
+            return "";
+        }
+
+        std::ostringstream result;
+        result << root->val;
+
+        if (root->left || root->right) {
+            result << "(" << tree2str(root->left) << ")";
+        }
+
+        if (root->right) {
+            result << "(" << tree2str(root->right) << ")";
+        }
+
+        // Remove empty parentheses pairs
+        std::string strResult = result.str();
+       /* strResult.erase(std::remove(strResult.begin(), strResult.end(), '('), strResult.end());
+        strResult.erase(std::remove(strResult.begin(), strResult.end(), ')'), strResult.end());
+*/
+        return  strResult ;
+    }
